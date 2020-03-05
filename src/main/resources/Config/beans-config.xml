@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:s="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<bean id="articleDao" class="com.gestion.stock.dao.impl.ArticleDaoImpl" />
+	<bean id="articleService" class="com.gestion.stock.services.impl.ArticleServiceImpl">
+		<property name="dao" ref="articleDao"></property>
+	</bean>
+	
+	<bean id="categoryDao" class="com.gestion.stock.dao.impl.CategoryDaoImpl" />
+	<bean id="categoryService" class="com.gestion.stock.services.impl.CategoryServiceImpl">
+		<property name="dao" ref="categoryDao"></property>
+	</bean>
+	
+	<bean id="clientDao" class="com.gestion.stock.dao.impl.ClientDaoImpl" />
+	<bean id="clientService" class="com.gestion.stock.services.impl.ClientServiceImpl">
+		<property name="dao" ref="clientDao"></property>
+	</bean>
+	
+	<bean id="commandeClientDao" class="com.gestion.stock.dao.impl.CommandeClientDaoImpl" />
+	<bean id="commandeClientService" class="com.gestion.stock.services.impl.CommandeClientServiceImpl">
+		<property name="dao" ref="commandeClientDao"></property>
+	</bean>
+	
+	<bean id="commandeFournisseurDao" class="com.gestion.stock.dao.impl.CommandeFournisseurDaoImpl" />
+	<bean id="commandeFournisseurService" class="com.gestion.stock.services.impl.CommandeFournisseurServiceImpl">
+		<property name="dao" ref="commandeFournisseurDao"></property>
+	</bean>
+	
+	<bean id="fournisseurDao" class="com.gestion.stock.dao.impl.FournisseurDaoImpl" />
+	<bean id="fournisseurService" class="com.gestion.stock.services.impl.FournisseurServiceImpl">
+		<property name="dao" ref="fournisseurDao"></property>
+	</bean>
+	
+	<bean id="ligneCmdClientDao" class="com.gestion.stock.dao.impl.LigneCmdClientDaoImpl" />
+	<bean id="ligneCmdClientService" class="com.gestion.stock.services.impl.LigneCmdClientServiceImpl">
+		<property name="dao" ref="ligneCmdClientDao"></property>
+	</bean>
+	
+	<bean id="ligneCmdFournisseurDao" class="com.gestion.stock.dao.impl.LigneCmdFournisseurDaoImpl" />
+	<bean id="ligneCmdFournisseurService" class="com.gestion.stock.services.impl.LigneCmdFournisseurServiceImpl">
+		<property name="dao" ref="ligneCmdFournisseurDao"></property>
+	</bean>
+	
+	<bean id="ligneVenteDao" class="com.gestion.stock.dao.impl.LigneVenteDaoImpl" />
+	<bean id="ligneVenteService" class="com.gestion.stock.services.impl.LigneVenteServiceImpl">
+		<property name="dao" ref="ligneVenteDao"></property>
+	</bean>
+	
+	<bean id="mvtStockDao" class="com.gestion.stock.dao.impl.MvtStockDaoImpl" />
+	<bean id="mvtStockService" class="com.gestion.stock.services.impl.MvtStockServiceImpl">
+		<property name="dao" ref="mvtStockDao"></property>
+	</bean>
+	
+	<bean id="utilisateurDao" class="com.gestion.stock.dao.impl.UtilisateurDaoImpl" />
+	<bean id="utilisateurService" class="com.gestion.stock.services.impl.UtilisateurServiceImpl">
+		<property name="dao" ref="utilisateurDao"></property>
+	</bean>
+	
+	<bean id="venteDao" class="com.gestion.stock.dao.impl.VenteDaoImpl" />
+	<bean id="venteService" class="com.gestion.stock.services.impl.VenteServiceImpl">
+		<property name="dao" ref="venteDao"></property>
+	</bean>
+
+</beans>
