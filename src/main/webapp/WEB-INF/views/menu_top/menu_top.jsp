@@ -53,6 +53,17 @@
             </div>
             <!-- Message End -->
           </a>
+          <div class="dropdown-divider"></div>
+          <c:url value="/j_spring_security_logout" var="logout"/>
+          <a href="${logout}" class="dropdown-item">
+            <div class="media">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  <i class="fas fa-sign-out-alt"> <fmt:message code="common.Logout"/></i>
+                </h3>
+              </div>
+            </div>
+          </a>
         </div>
       </li>
     </ul>

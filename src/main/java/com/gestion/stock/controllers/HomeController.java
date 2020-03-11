@@ -17,10 +17,10 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = "/")
-	public String home() {
-		return "home/home";
-	}
+//	@RequestMapping(value = "/")
+//	public String home() {
+//		return "home/home";
+//	}
 	@RequestMapping(value = "/blank")
 	public String homeBlank() {
 		return "blank/blank";

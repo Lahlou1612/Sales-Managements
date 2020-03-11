@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+body {
+	/*#afbfc4 */
+	background:#afbfc4 !important;
+	width: 100%;
+	height: 100%;
+}
+.brand-image{
+	
+}
+.login-logo a b{
+	color: #3b3d3d !important;
+	font-size: 31px !important;
+}
+.login-logo a{
+	color: white !important;
+	font-size: 31px !important;
+}
+header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: none;
+	z-index: 100;
+}
+
+.center-container-home {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	text-align: center;
+	z-index: 0;
+}
+
+.center-container-home:after {
+	content: '';
+	height: 100%;
+	margin-left: -0.25em;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.center-container {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	text-align: center;
+	z-index: 0;
+}
+
+.center-container:after {
+	content: '';
+	height: 100%;
+	margin-left: -0.25em;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.center-block {
+	max-width: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#particles-holder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100% !important;
+	overflow: hidden;
+	opacity: 0.8;
+	-moz-opacity: 0.8;
+	-webkit-opacity: 0.8;
+	filter: alpha(opacity = 80);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	z-index: 0;
+}
+
+#borders {
+	position: absolute;
+	overflow: hidden;
+	left: 20px;
+	right: 20px;
+	top: 20px;
+	bottom: 20px;
+	border: 1px solid #fff;
+}
