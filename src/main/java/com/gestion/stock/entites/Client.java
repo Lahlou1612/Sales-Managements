@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "client")
@@ -15,10 +18,24 @@ public class Client implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long idClient;
+	
+
+	@NotNull
+    @Size(min = 1, message = "Veuillez saisir votre Nom svp !")
 	private String nom;
+	
+	@NotNull
+    @Size(min = 1, message = "Veuillez saisir votre Prénom svp !")
 	private String prenom;
+	
+	@NotNull(message = "Veuillez saisir votre Adresse svp !")
+    @Size(min = 1, max = 100, message = "Adresse doit contenir entre 1 et 200 caractères !")
 	private String adresse;
+	
 	private String photo;
+
+	@NotNull(message = "Veuillez saisir votre Adresse Mail svp !")
+    @Email(message="Veuillez re-vérifier votre Adresse Mail Svp !")
 	private String mail;
 
 	@OneToMany(mappedBy = "client")

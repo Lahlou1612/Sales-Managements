@@ -1,7 +1,6 @@
 package com.gestion.stock.services.impl;
 
 import java.util.List;
-
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gestion.stock.dao.IClientDAO;

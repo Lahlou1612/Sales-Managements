@@ -5,6 +5,7 @@ import java.util.List;
 import com.gestion.stock.entites.Client;
 
 public interface IClientService {
+	
 	public Client save(Client entity);
 
 	public Client update(Client entity);
