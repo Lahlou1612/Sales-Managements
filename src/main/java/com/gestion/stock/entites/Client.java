@@ -33,7 +33,8 @@ public class Client implements Serializable {
 	
 	private String photo;
 
-	@NotNull(message = "Veuillez saisir votre Adresse Mail svp !")
+	@NotNull
+	@Size(min = 1, message = "Veuillez saisir votre Adresse Mail svp !")
     //@Email(message="Veuillez re-vérifier votre Adresse Mail Svp !")
 	private String mail;
 

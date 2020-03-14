@@ -62,4 +62,9 @@ public class LigneCmdClientServiceImpl implements ILigneCmdClientService {
 		return dao.findCountBy(paramName, paramValue);
 	}
 
+	@Override
+	public List<LigneCmdClient> getByIdCommande(Long idCommandeClient) {
+		return dao.getByIdCommande(idCommandeClient);
+	}
+
 }

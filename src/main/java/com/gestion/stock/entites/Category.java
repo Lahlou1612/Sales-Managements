@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
 @Table(name = "category")
@@ -16,7 +20,13 @@ public class Category implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long idCategory;
+	
+	@NotNull
+    @Size(min = 1, message = "Veuillez saisir votre Code svp !")
 	private String code;
+	
+	@NotNull(message = "Veuillez saisir votre Désignation svp !")
+    @Size(min = 1, max = 100, message = "La désignation doit contenir entre 1 et 200 caractères !")
 	private String designation;
 
 	@OneToMany(mappedBy = "category")
@@ -50,6 +60,7 @@ public class Category implements Serializable {
 		this.designation = designation;
 	}
 
+	@JsonIgnore
 	public List<Article> getArticles() {
 		return articles;
 	}

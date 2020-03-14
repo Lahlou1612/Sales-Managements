@@ -1,6 +1,8 @@
 package com.gestion.stock.entites;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +15,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 @Entity
 @Table(name = "commandeClient")
@@ -31,6 +39,9 @@ public class CommandeClient implements Serializable {
 
 	@OneToMany(mappedBy = "commandeClient")
 	private List<LigneCmdClient> ligneCmdClients;
+
+	@Transient
+	private BigDecimal totalCommande;
 
 	public CommandeClient() {
 		super();
@@ -68,11 +79,46 @@ public class CommandeClient implements Serializable {
 		this.client = client;
 	}
 
+	@JsonIgnore
 	public List<LigneCmdClient> getLigneCmdClients() {
 		return ligneCmdClients;
 	}
 
 	public void setLigneCmdClients(List<LigneCmdClient> ligneCmdClients) {
 		this.ligneCmdClients = ligneCmdClients;
+	}
+
+	public BigDecimal getTotalClient() {
+		totalCommande = BigDecimal.ZERO;
+		if (!ligneCmdClients.isEmpty()) {
+
+			for (LigneCmdClient cmdClient : ligneCmdClients) {
+				if (cmdClient.getQuantite() != null && cmdClient.getPrixUnitaire() != null) {
+					BigDecimal totalLigne = cmdClient.getQuantite().multiply(cmdClient.getPrixUnitaire());
+					totalCommande = totalCommande.add(totalLigne);
+				}
+			}
+		}
+		return totalCommande;
+	}
+
+	@Transient
+	public String getLigneCommandeJson()
+	{
+		if(!ligneCmdClients.isEmpty())
+		{ 
+			try 
+			{
+				ObjectMapper mapper = new ObjectMapper();
+				return mapper.writeValueAsString(ligneCmdClients);
+			} catch (JsonGenerationException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return "";
 	}
 }

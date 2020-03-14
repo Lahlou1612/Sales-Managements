@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "utilisateur")
@@ -16,13 +18,21 @@ public class Utilisateur implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long idUtilisateur;
+	@NotNull
+    @Size(min = 1, message = "Veuillez saisir le Nom svp !")
 	private String nom;
+	@NotNull
+    @Size(min = 1, message = "Veuillez saisir le Prénom svp !")
 	private String prenom;
+	@NotNull
+    @Size(min = 1, message = "Veuillez saisir le Mail svp !")
 	private String mail;
+	@NotNull
+    @Size(min = 1, message = "Veuillez saisir le Mot de passe svp !")
 	private String motDePasse;
 	private String photo;
-	
 	private boolean actived;
+	
 	@OneToMany(mappedBy = "utilisateur")
 	private List<Roles> roles;
 

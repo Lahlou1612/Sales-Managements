@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "article")
@@ -15,10 +17,20 @@ public class Article implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long idArticle;
+	@NotNull
+    @Size(min = 1, message = "Veuillez saisir votre Code svp !")
 	private String codeArticle;
+	@NotNull
+    @Size(min = 1, message = "Veuillez saisir votre Désignation svp !")
 	private String designation;
+//	@NotNull
+//    @Size(min = 1, message = "Veuillez saisir le prix unitaire HT svp !")
 	private BigDecimal prixUnitaireHT;
+//	@NotNull
+//    @Size(min = 1, message = "Veuillez saisir le taux TVA svp !")
 	private BigDecimal tauxTva;
+//	@NotNull
+//    @Size(min = 1, message = "Veuillez saisir le prix unitaire TTC svp !")
 	private BigDecimal prixUnitaireTTC;
 	private String photo;
 

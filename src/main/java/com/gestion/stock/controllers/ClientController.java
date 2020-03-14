@@ -30,7 +30,6 @@ public class ClientController {
 	public String Client(Model model) {
 		List<Client> clients = clientService.selectAll();
 		if (clients == null) {
-			System.out.println("OK");
 			clients = new ArrayList<Client>();
 		}
 		model.addAttribute("clients", clients);

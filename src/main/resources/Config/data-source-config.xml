@@ -13,7 +13,7 @@
 			value="com.mysql.jdbc.Driver"></property>
 		<!-- ?createDatabaseIfNotExist=true -->
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/salesdb"></property>
+			value="jdbc:mysql://localhost:3306/salesdb?createDatabaseIfNotExist=true"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 	</bean>

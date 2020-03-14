@@ -18,6 +18,7 @@
 			</div>
 		</div>
 		<nav class="mt-2">
+			<!-- Home -->
 			<ul class="nav nav-pills nav-sidebar flex-column"
 				data-widget="treeview" role="menu" data-accordion="false">
 				<c:url value="/home/" var="home" />
@@ -27,6 +28,7 @@
 							<fmt:message code="common.dashboard" />
 						</p>
 				</a></li>
+				<!-- Article -->
 				<c:url value="/article/" var="article" />
 				<li class="nav-item"><a href="${article}" class="nav-link">
 						<i class="nav-icon fas fa-boxes"></i>
@@ -34,31 +36,31 @@
 							<fmt:message code="common.article" />
 						</p>
 				</a></li>
+				<!-- Client -->
 				<c:url value="/client/" var="client" />
-				<li class="nav-item has-treeview"><a href="${client}" class="nav-link">
-						<i class="nav-icon fas fa-chalkboard-teacher"></i>
-						<p>
-							<fmt:message code="common.client" />
-							<i class="right fas fa-angle-left"></i>
-						</p>
+				<li class="nav-item has-treeview">
+				<a href="${client}" class="nav-link"><i class="nav-icon fas fa-chalkboard-teacher"></i>
+					<p>
+						<fmt:message code="common.client" /><i class="right fas fa-angle-left"></i>
+					</p>
 				</a>
-					<ul class="nav nav-treeview">
-					<c:url value="/client/" var="client" />
-						<li class="nav-item"><a	href="${client}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+				<!-- Client -->
+				<ul class="nav nav-treeview">
+				<c:url value="/client/" var="client" />
+					<li class="nav-item"><a	href="${client}" class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>
 									<fmt:message code="common.client" />
 								</p>
 						</a></li>
-						<c:url value="/commandeClient/" var="cmdClient" />
-						<li class="nav-item"><a
-							href="${cmdCLient}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+				<c:url value="/commandeclient/" var="cmdClient" />
+					<li class="nav-item"><a href="${cmdClient}" class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>
 									<fmt:message code="common.client.commande" />
 								</p>
 						</a></li>
-					</ul></li>
+				</ul>
+				</li>
+				<!-- Fournisseur -->
 				<c:url value="/fournisseur/" var="fournisseur" />
 				<li class="nav-item has-treeview"><a href="${fournisseur}" class="nav-link">
 						<i class="nav-icon fas fa-address-card"></i>
@@ -99,8 +101,8 @@
 							<fmt:message code="common.vente" />
 						</p>
 				</a></li>
-				<c:url value="/parametrageCategory/" var="prmCategory" />	
-				<li class="nav-item has-treeview"><a href="${prmCategory}" class="nav-link">
+<!-- 				<c:url value="/parametrageCategory/" var="prmCategory" />	 -->
+				<li class="nav-item has-treeview"><a href="#" class="nav-link">
 						<i class="nav-icon fas fa-cogs"></i>
 						<p>
 							<fmt:message code="common.parametrage" />
@@ -108,8 +110,8 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-					<c:url value="/parametrageCategory/" var="prmCategory" />
-						<li class="nav-item"><a	href="${prmCategory}"
+					<c:url value="/category/" var="category" />
+						<li class="nav-item"><a	href="${category}"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>
 									<fmt:message code="common.parametrage.category" />
