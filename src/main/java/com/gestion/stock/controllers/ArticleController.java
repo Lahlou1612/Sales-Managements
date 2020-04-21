@@ -3,9 +3,11 @@ package com.gestion.stock.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gestion.stock.entites.*;
+import com.gestion.stock.export.IFileExporter;
 import com.gestion.stock.services.*;
 
 @Controller
@@ -25,6 +28,10 @@ public class ArticleController {
 	private IArticleService articleService;
 	@Autowired
 	private ICategoryService categoryService;
+	
+	@Autowired
+	@Qualifier("articleExporter")
+	private IFileExporter exporter;
 
 	// Redirection vers la page gestion des Articles.
 	@RequestMapping(value = "/")
@@ -95,5 +102,12 @@ public class ArticleController {
 			}
 		}
 		return "redirect:/article/";
+	}
+	
+	@RequestMapping(value = "/export/")
+	private String exporterArticles(HttpServletResponse response) {
+		exporter.exportDataToExcel(response, null, null);
+		
+		return "article/article";
 	}
 }

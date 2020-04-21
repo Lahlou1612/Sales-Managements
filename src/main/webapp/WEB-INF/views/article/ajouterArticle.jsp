@@ -72,6 +72,7 @@
 								<div class="col-12">
 									<div class="card">
 										<div class="card-body">
+										
 										<c:url value="/article/enregistrer" var="enregisterArticle" />
 											<f:form modelAttribute="article" action="${enregisterArticle}" method="post" >
 											<f:hidden path="idArticle"/>
@@ -88,29 +89,26 @@
 												<div class="form-group">
 													<label><fmt:message code="common.article.prixHT" /></label> 
 													<f:input id="prixUnitaireHT" path="prixUnitaireHT" class="form-control form-control-sm" placeholder="Entrez le prix unitaire HT..." />
-<%-- 													<f:errors path="prixUnitaireHT" cssClass="alert alert-warning" element="div" /> --%>
 												</div>
 												<div class="form-group">
 													<label><fmt:message code="common.article.taux" /></label> 
 													<f:input id="tauxTVA" path="tauxTva" class="form-control form-control-sm" placeholder="Entrez le taux de TVA..." />
-<%-- 													<f:errors path="tauxTva" cssClass="alert alert-warning" element="div" /> --%>
 												</div>
 												<div class="form-group">
 													<label><fmt:message code="common.article.prixTTC" /></label> 
 													<f:input id="prixUnitaireTTC" path="prixUnitaireTTC" class="form-control form-control-sm" placeholder="Entrez le prix unitaire TTC..." />
-<%-- 													<f:errors path="prixUnitaireTTC" cssClass="alert alert-warning" element="div" /> --%>
 												</div>
 												<div class="form-group">
 													<label><fmt:message code="common.category.code" /></label> 
-													<f:select path="category.idCategory" class="form-control" items="${categories}" itemLabel="code" itemValue="idCategory"/>
+													<f:select path="category.idCategory" class="form-control" items="${categories}" itemLabel="designation" itemValue="idCategory"/>
 												</div>
 													<button type="submit" class="btn btn-info" style="font-size: 14px !important;">
 														<i class="fa fa-save"> <fmt:message code="common.enregistrer" /></i>
 													</button>
 													<a href="<c:url value="/article/" />" class="btn btn-danger" style="font-size: 14px !important;"><i class="fa fa-times"> 
 													<fmt:message code="common.annuler" /></i></a>
-											
 											</f:form>
+											
 										</div>
 									</div>
 								</div>

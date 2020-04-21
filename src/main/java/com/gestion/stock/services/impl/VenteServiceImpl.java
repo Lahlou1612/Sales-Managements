@@ -62,4 +62,9 @@ public class VenteServiceImpl implements IVenteService{
 		return dao.findCountBy(paramName, paramValue);
 	}
 
+	@Override
+	public List<Vente> getByStatutVente(String statut) {
+		return dao.getByStatutVente(statut);
+	}
+
 }

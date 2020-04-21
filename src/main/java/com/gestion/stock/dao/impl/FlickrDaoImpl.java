@@ -11,43 +11,13 @@ import com.github.scribejava.apis.FlickrApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.OAuth1AccessToken;
 import com.github.scribejava.core.model.OAuth1RequestToken;
-import com.github.scribejava.core.model.OAuth1Token;
-import com.github.scribejava.core.model.OAuth2Authorization;
 import com.github.scribejava.core.oauth.OAuth10aService;
 import java.util.concurrent.ExecutionException;
-
-import javax.swing.JOptionPane;
-
-import org.scribe.model.Token;
-import org.scribe.model.Verifier;
-
-import com.flickr4java.flickr.Flickr;
-import com.flickr4java.flickr.FlickrException;
-import com.flickr4java.flickr.REST;
 import com.flickr4java.flickr.RequestContext;
 import com.flickr4java.flickr.auth.Auth;
-import com.flickr4java.flickr.auth.AuthInterface;
 import com.flickr4java.flickr.auth.Permission;
-import com.flickr4java.flickr.people.User;
 import com.flickr4java.flickr.uploader.UploadMetaData;
-import com.flickr4java.flickr.uploader.Uploader;
-import com.flickr4java.flickr.util.*;
-import com.flickr4java.flickr.util.FileAuthStore;
 import com.gestion.stock.dao.IFlickrDAO;
-import com.flickr4java.flickr.util.AuthStore;
-import com.flickr4java.flickr.Flickr;
-import com.flickr4java.flickr.FlickrException;
-import com.flickr4java.flickr.REST;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
-import com.github.scribejava.apis.*;
-import com.github.scribejava.core.builder.*;
-import com.github.scribejava.core.model.OAuth1AccessToken;
-import com.github.scribejava.core.model.OAuth1RequestToken;
-import com.github.scribejava.core.model.OAuthRequest;
-import com.github.scribejava.core.oauth.OAuth10aService;
-import com.github.scribejava.core.oauth.*;
 
 public class FlickrDaoImpl implements IFlickrDAO {
 
@@ -56,6 +26,7 @@ public class FlickrDaoImpl implements IFlickrDAO {
 	private static String apiKey = "49874a858af03ab83c24c98f109b09e9";
 	private static String sharedSecret = "1b6894e4990c708f";
 
+	@SuppressWarnings("unused")
 	public void connect() {
 		Flickr.debugRequest = false;
 		Flickr.debugStream = false;
@@ -87,6 +58,7 @@ public class FlickrDaoImpl implements IFlickrDAO {
 		Flickr flickr = new Flickr(apiKey, sharedSecret, new REST());
 		OAuth10aService service = new ServiceBuilder(apiKey).apiSecret(sharedSecret)
 				.build(FlickrApi.instance(FlickrApi.FlickrPerm.READ));
+		@SuppressWarnings("resource")
 		final Scanner in = new Scanner(System.in);
 		final OAuth1RequestToken requestToken = service.getRequestToken();
 		final String authUrl = service.getAuthorizationUrl(requestToken);

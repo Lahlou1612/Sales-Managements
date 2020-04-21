@@ -34,15 +34,15 @@
 					<div class="row mb-2">
 						<div class="col-sm-6">
 							<h1>
-								<fmt:message code="common.gestion.client" />
+								<fmt:message code="common.gestion.user" />
 							</h1>
 						</div>
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#"><fmt:message
-											code="common.gestion.client" /></a></li>
+											code="common.gestion.user" /></a></li>
 								<li class="breadcrumb-item active"><fmt:message
-										code="common.nouveau.client" /></li>
+										code="common.ajouter.user" /></li>
 							</ol>
 						</div>
 					</div>
@@ -52,7 +52,7 @@
 				<div class="card">
 					<div class="card-header">
 						<h3 class="card-title">
-							<fmt:message code="common.nouveau.client" />
+							<fmt:message code="common.ajouter.user" />
 						</h3>
 						<div class="card-tools">
 							<button type="button" class="btn btn-tool"
@@ -72,36 +72,50 @@
 								<div class="col-12">
 									<div class="card">
 										<div class="card-body">
-										<c:url value="/client/enregistrer" var="enregisterClient" />
-											<f:form modelAttribute="client" action="${enregisterClient}" method="post" >
-											<f:hidden path="idClient"/>
+										<c:url value="/utilisateur/enregistrer" var="enregisterUser" />
+											<f:form modelAttribute="utilisateur" action="${enregisterUser}" method="post" >
+											<f:hidden path="idUtilisateur"/>
 												<div class="form-group">
-													<label><fmt:message code="common.nom" /></label> 
-													<f:input path="nom" class="form-control form-control-sm" type="text" placeholder="Entrez votre nom..." />
+													<label><fmt:message code="common.user.nom" /></label> 
+													<f:input path="nom" class="form-control form-control-sm" type="text" placeholder="Entrez le nom..." />
 													<f:errors path="nom" cssClass="alert alert-warning" element="div" />
 												</div>
 												<div class="form-group">
-													<label><fmt:message code="common.prenom" /></label>
-													<f:input path="prenom" class="form-control form-control-sm" placeholder="Entrez votre prénom..." />
+													<label><fmt:message code="common.user.prenom" /></label>
+													<f:input path="prenom" class="form-control form-control-sm" placeholder="Entrez le prénom..." />
 													<f:errors path="prenom" cssClass="alert alert-warning" element="div" />
 												</div>
 												<div class="form-group">
-													<label><fmt:message code="common.adresse" /></label> 
-													<f:input path="adresse" class="form-control form-control-sm" placeholder="Entrez votre adresse..." />
-													<f:errors path="adresse" cssClass="alert alert-warning" element="div" />
-												</div>
-												<div class="form-group">
-													<label><fmt:message code="common.mail" /></label> 
-													<f:input path="mail" class="form-control form-control-sm" placeholder="Entrez votre mail..." />
+													<label><fmt:message code="common.user.mail" /></label> 
+													<f:input path="mail" class="form-control form-control-sm" placeholder="Entrez l'adresse mail..." />
 													<f:errors path="mail" cssClass="alert alert-warning" element="div" />
 												</div>
+												<div class="form-group">
+													<label><fmt:message code="common.user.password" /></label> 
+													<f:input path="motDePasse" type="password" class="form-control form-control-sm" placeholder="Entrez le mot de passe..." />
+													<f:errors path="motDePasse" cssClass="alert alert-warning" element="div" />
+												</div>
+												<div class="form-group">
+														<label><fmt:message code="common.user.statut" /></label> 
+														<f:select path="actived" class="form-control form-control-sm" id="actived">
+																<f:option value="1">Activé</f:option>
+																<f:option value="0">Désactivé</f:option>
+														</f:select>
+													</div>
+																								
+													<div class="form-group">
+														<label><fmt:message code="common.liste.role" /></label> 
+														<f:select path="roleName" class="form-control form-control-sm">
+																<f:option value="ROLE_ADMIN">Admin</f:option>
+																<f:option value="ROLE_USER">User</f:option>
+														</f:select>
+													</div>
 												
 													<button type="submit" class="btn btn-info" style="font-size: 14px !important;">
 														<i class="fa fa-save"> <fmt:message code="common.enregistrer" /></i>
 													</button>
-													<a href="<c:url value="/client/" />" class="btn btn-danger" style="font-size: 14px !important;"><i class="fa fa-times"> 
+													<a href="<c:url value="/utilisateur/" />" class="btn btn-danger" style="font-size: 14px !important;"><i class="fa fa-times"> 
 													<fmt:message code="common.annuler" /></i></a>
-											
 											</f:form>
 										</div>
 									</div>

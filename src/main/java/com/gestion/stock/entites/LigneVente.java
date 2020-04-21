@@ -1,6 +1,7 @@
 package com.gestion.stock.entites;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "ligneVente")
 public class LigneVente implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long idLigneVente;
@@ -23,6 +28,9 @@ public class LigneVente implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "vente")
 	private Vente vente;
+	
+	private BigDecimal prixUnitaireTTC;
+	private BigDecimal quantite;
 
 	public LigneVente() {
 		super();
@@ -42,5 +50,29 @@ public class LigneVente implements Serializable {
 
 	public void setArticle(Article article) {
 		this.article = article;
+	}
+	@JsonIgnore
+	public Vente getVente() {
+		return vente;
+	}
+
+	public void setVente(Vente vente) {
+		this.vente = vente;
+	}
+
+	public BigDecimal getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(BigDecimal quantite) {
+		this.quantite = quantite;
+	}
+
+	public BigDecimal getPrixUnitaireTTC() {
+		return prixUnitaireTTC;
+	}
+
+	public void setPrixUnitaireTTC(BigDecimal prixUnitaireTTC) {
+		this.prixUnitaireTTC = prixUnitaireTTC;
 	}
 }

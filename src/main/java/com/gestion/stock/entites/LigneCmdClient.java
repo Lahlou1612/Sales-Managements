@@ -15,6 +15,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Entity
 @Table(name = "ligneCmdClient")
 public class LigneCmdClient implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long idLigneCmdClient;

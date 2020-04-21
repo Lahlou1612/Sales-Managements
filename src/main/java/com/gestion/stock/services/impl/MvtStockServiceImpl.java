@@ -62,4 +62,14 @@ public class MvtStockServiceImpl implements IMvtStockService{
 		return dao.findCountBy(paramName, paramValue);
 	}
 
+	@Override
+	public List<MvtStock> getByIdArticle(Long idArticle) {
+		return dao.getByIdArticle(idArticle);
+	}
+
+	@Override
+	public MvtStock getByIdArticleObjet(Long idArticle) {
+		return dao.getByIdArticleObjet(idArticle);
+	}
+
 }

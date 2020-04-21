@@ -62,13 +62,15 @@
 							</button>
 							<button type="button" class="btn  btn-outline-primary btn-sm"
 								style="margin-right: 5px;">
-								<i class="fa fa-upload"></i> <a href="#" id="hover"> <fmt:message
-										code="common.importer" /></a>
+								<i class="fa fa-upload"></i> 
+								
+								<a href="#" id="hover"> <fmt:message code="common.importer" /></a>
 							</button>
 							<button type="button" class="btn btn-outline-primary btn-sm"
 								style="margin-right: 5px;">
-								<i class="fas fa-download"></i> <a href="#" id="hover"> <fmt:message
-										code="common.exporter" /></a>
+								<i class="fas fa-download"></i> 
+								<c:url value="/client/export/" var="export" />
+								<a href="${export}" id="hover"> <fmt:message code="common.exporter" /></a>
 							</button>
 
 

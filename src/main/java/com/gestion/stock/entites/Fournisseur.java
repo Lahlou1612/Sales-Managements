@@ -11,9 +11,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "fournisseur")
 public class Fournisseur implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long idFournisseur;
@@ -85,7 +89,7 @@ public class Fournisseur implements Serializable {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-
+	@JsonIgnore
 	public List<CommandeFournisseur> getCommandeFournisseurs() {
 		return commandeFournisseurs;
 	}

@@ -2,11 +2,14 @@ package com.gestion.stock.controllers;
 
 import java.util.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import com.gestion.stock.entites.*;
+import com.gestion.stock.export.IFileExporter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +27,10 @@ public class ClientController {
 
 	@Autowired
 	private IClientService clientService;
+	
+	@Autowired
+	@Qualifier("clientExporter")
+	private IFileExporter exporter;
 
 	// Redirection vers la page gestion des Clients.
 	@RequestMapping(value = "/")
@@ -82,5 +89,12 @@ public class ClientController {
 			}
 		}
 		return "redirect:/client/";
+	}
+	
+	@RequestMapping(value = "/export/")
+	private String exporterArticles(HttpServletResponse response) {
+		exporter.exportDataToExcel(response, null, null);
+		
+		return "client/client";
 	}
 }

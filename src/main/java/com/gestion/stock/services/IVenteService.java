@@ -22,4 +22,7 @@ public interface IVenteService {
 	public Vente findOne(String[] paramNames, Object[] paramValues);
 
 	public int findCountBy(String paramName, String paramValue);
+	
+	public List<Vente> getByStatutVente(String statut);
+
 }

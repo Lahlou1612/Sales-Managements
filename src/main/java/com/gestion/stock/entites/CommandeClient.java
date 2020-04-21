@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,6 +26,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 @Entity
 @Table(name = "commandeClient")
 public class CommandeClient implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Long idCommandeClient;
@@ -37,7 +39,7 @@ public class CommandeClient implements Serializable {
 	@JoinColumn(name = "idClient")
 	private Client client;
 
-	@OneToMany(mappedBy = "commandeClient")
+	@OneToMany(mappedBy = "commandeClient", cascade = CascadeType.ALL)
 	private List<LigneCmdClient> ligneCmdClients;
 
 	@Transient
@@ -98,6 +100,8 @@ public class CommandeClient implements Serializable {
 					totalCommande = totalCommande.add(totalLigne);
 				}
 			}
+		} else {
+			return null;
 		}
 		return totalCommande;
 	}

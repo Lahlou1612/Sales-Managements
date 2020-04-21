@@ -61,35 +61,49 @@
 							</button>
 						</div>
 					</div>
+					
+						<div class="callout callout-danger" id="notFoundMsg" style="width:95%;margin-left:30px;margin-top: 10px; margin-bottom: 0;">
+							<h6 style="color:red;"><fmt:message code="common.article.not.found"/></h6>
+						 </div>
+						 <div class="callout callout-danger" id="clientnotSelectedMsg" style="width:95%;margin-left:30px;margin-top: 10px; margin-bottom: 0;">
+							<h6 style="color:red;"><fmt:message code="common.client.not.selected"/></h6>
+						 </div>
+						 <div class="callout callout-danger" id="unexpectedErrorMsg" style="width:95%;margin-left:30px;margin-top: 10px; margin-bottom: 0;">
+							<h6 style="color:red;"><fmt:message code="common.client.selected.unexpected"/></h6>
+						 </div>
+						 <div class="callout callout-danger" id="quatiteErrorMsg" style="width:95%;margin-left:30px;margin-top: 10px; margin-bottom: 0;">
+							<h6 style="color:red;"><fmt:message code="common.article.quatite.not.found"/></h6>
+						 </div>
 					<div class="card-body">
 						<section class="content">
 							<div class="row">
 								<div class="col-12">
 									<div class="card">
 										<div class="card-body">
-											<form action="" method="post" >
+										
+											<form action="" method="post">
 												<div class="form-row">
 													<div class="col-md-4 mb-3">
 														<label><fmt:message code="common.client.commande.code" /></label> 
-														<input class="form-control form-control-sm" type="text" value="${codeCde}" disabled/>
+														<input class="form-control form-control-sm" id="codeCommande" type="text" value="${code}" disabled/>
 													</div>
 													<div class="col-md-4 mb-3">
 														<label><fmt:message code="common.client.commande.date" /></label>
-														<input class="form-control form-control-sm" value="${dateCde}" disabled/>
+														<input class="form-control form-control-sm" id="dateCommande" value="${dateCmd}" disabled/>
 													</div>
 													<div class="col-md-4 mb-3">
 														<label><fmt:message code="common.client" /></label> 
 														<select class="form-control form-control-sm" id="listClients">
-															<c:forEach items="${clients}" var="clt">														
+														<option value="-1"><fmt:message code="common.client.selectionner" /></option>
+ 																<c:forEach items="${clients}" var="clt">
 																<option value="${clt.getIdClient()}">${clt.getNom()}</option>
 															</c:forEach>
 														</select>
 													</div>
 												</div>
-											
-											
-												<button type="submit" class="btn btn-info" style="font-size: 14px !important;">
+												<button type="button" id="btnEnregistrerCommande" onclick="enregitrerCommandeClient()" class="btn btn-info" style="font-size: 14px !important;">
 														<i class="fa fa-save"> <fmt:message code="common.enregistrer" /></i>
+<%-- 														<a href="<c:url value="/commandeclient/" />"style="color : white !important;"></a> --%>
 												</button>
 												<a href="<c:url value="/commandeclient/" />" class="btn btn-danger" style="font-size: 14px !important;"><i class="fa fa-times"> 
 													<fmt:message code="common.annuler" /></i>
@@ -107,29 +121,44 @@
 						<section class="content">
 							<div class="row">
 								<div class="col-12">
-									<!-- Détails Commande -->
+									<!-- DÃ©tails Commande -->
 									<div class="card">
 						              <div class="card-header" style="background-color: #bfdae0;">
 						                <h3 class="card-title"><fmt:message code="common.liste.detail.client" /></h3>
 						              </div>
 						              
 						              <div class="card-body">
-
-						      			
-							              <div class="form-group"style="width: 250px !important;">
-											<input type="text" id="idArticle_search" class="form-control form-control-sm" placeholder="Article à chercher..." />
-							             	<label><fmt:message code="common.article.not.found"/></label>
-							              </div>
-							          		
-							          	
-						              
-						                <table class="table table-striped table-bordered table-hover">
+							              <div class="form-row">
+														<div class="form-group">
+															<label><fmt:message code="common.article.list" /></label> 
+															<select class="form-control form-control-sm" id="listArticle" style="width: 250px !important;">
+															<option value="-1"><fmt:message code="common.article.selectionner" /></option>
+	 																<c:forEach items="${articles}" var="article">
+																	<option value="${article.getIdArticle()}">${article.getDesignation()}</option>
+																</c:forEach>
+															</select>
+														</div>
+														<div class="form-group" style="margin-left: 15px !important;">
+															<label><fmt:message code="common.article.quatite.souhaite" /></label>
+															<input type="number" class="form-control form-control-sm" id="quantite" style="width: 100px !important; "/>
+														</div>
+														<div class="form-group">
+															<button type="button" id="ajouterPanier" onclick="" class="btn btn-secondary btn-sm" style="margin-top: 30px; margin-left: 15px;">
+																<i class="fa fa-cart-plus"> <fmt:message code="common.ajouter.panier" /></i>
+															</button>
+														</div>
+											</div>
+							           </div>
+							           
+							           
+						                <table class="table table-striped table-bordered table-hover" id="tableauArticle">
 						                  <thead>
 						                    <tr>
 						                      <th><fmt:message code="common.article" /></th>
 						                      <th><fmt:message code="common.qte" /></th>
 						                      <th><fmt:message code="common.article.prixTTC" /></th>
 						                      <th><fmt:message code="common.client.commande.total" /></th>
+						                      <th><fmt:message code="common.action" /></th>	
 						                    </tr>
 						                  </thead>
 							                  <tbody id="detailNouvelleCommande">
@@ -142,10 +171,7 @@
 							</div>
 						</section>
 					</div>
-					
-					
-			</section>
-		</div>
+				</section>
 		<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 		<aside class="control-sidebar control-sidebar-dark"></aside>
 	</div>

@@ -60,7 +60,8 @@
 							</button>
 							<button type="button" class="btn btn-outline-primary btn-sm" style="margin-right: 5px;">
 								<i class="fas fa-download"></i> 
-								<a href="#" id="hover"> <fmt:message code="common.exporter" /></a>
+								<c:url value="/commandeclient/export/" var="export" />
+								<a href="${export }" id="hover"> <fmt:message code="common.exporter" /></a>
 							</button>
 						</h3>
 						<div class="card-tools">
@@ -102,7 +103,7 @@
                   		<td>${commandeClient.getDateCommande()}</td>
                   		<td>${commandeClient.getClient().getNom()}</td>
                   		<td>${commandeClient.getTotalClient()}</td>
-                  		<td style="width: 325px !important;">
+                  		<td style="width: 250px !important;">
 							<h3 class="card-title">
 							
 							<textArea id="json${commandeClient.getIdCommandeClient()}" style="display: none;">${commandeClient.getLigneCommandeJson()}</textArea>
@@ -113,12 +114,8 @@
 							</a>
 							</button>
 							
-							<button type="button" class="btn btn-outline-primary btn-sm">
-							<i class="fas fa-pencil-alt"></i><c:url value="/commandeClient/modifier/${commandeClient.getIdCommandeClient()}" var="urlModifier" />
-							<a href="${urlModifier}" id="hover"><fmt:message code="common.modifier" /></a></button>
-
-							<button type="button" class="btn btn-outline-primary btn-sm" 
-							 data-toggle="modal" data-target="#suppressionModal${commandeClient.getIdCommandeClient()}" id="hover">
+							<button type="button" class="btn btn-outline-primary btn-sm" style="margin-right: 5px;" data-toggle="modal"
+									data-target="#suppressionModal${commandeClient.getIdCommandeClient()}" id="hover">
 							<i class="fas fa-trash"></i><fmt:message code="common.supprimer" /></button>
 							
 							<!-- Modal validation de suppression-->
@@ -139,7 +136,7 @@
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-size: 13px !important;">
 												<i class="fas fa-window-close"> <fmt:message code="common.annuler" /></i></button>
-												<c:url value="/client/supprimer/${commandeClient.getIdCommandeClient()}" var="urlSupprimer" />
+												<c:url value="/commandeclient/supprimer/${commandeClient.getIdCommandeClient()}" var="urlSupprimer" />
 												<a href="${urlSupprimer}" class="btn btn-danger" style="font-size: 13px !important;">
 												<i class="fas fa-trash"> <fmt:message code="common.confirmation.suppression" /></i></a>
 											</div>

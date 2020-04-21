@@ -39,10 +39,8 @@
 						</div>
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#"><fmt:message
-											code="common.article" /></a></li>
-								<li class="breadcrumb-item active"><fmt:message
-										code="common.liste.articles" /></li>
+								<li class="breadcrumb-item"><a href="#"><fmt:message code="common.article" /></a></li>
+								<li class="breadcrumb-item active"><fmt:message code="common.liste.articles" /></li>
 							</ol>
 						</div>
 					</div>
@@ -52,37 +50,23 @@
 				<div class="card">
 					<div class="card-header">
 						<h3 class="card-title">
-
-
-							<button type="button" class="btn  btn-outline-primary btn-sm"
-								style="margin-right: 5px;">
-								<i class="fas fa-user-plus"></i> <a
-									href="<c:url value="/article/nouveau" />" id="hover"> <fmt:message
-										code="common.ajouter.article" /></a>
+							<button type="button" class="btn  btn-outline-primary btn-sm" style="margin-right: 5px;">
+								<i class="fas fa-user-plus"></i> <a href="<c:url value="/article/nouveau" />" id="hover"> <fmt:message code="common.ajouter.article" /></a>
 							</button>
-							<button type="button" class="btn  btn-outline-primary btn-sm"
-								style="margin-right: 5px;">
-								<i class="fa fa-upload"></i> <a href="#" id="hover"> <fmt:message
-										code="common.importer" /></a>
+							<button type="button" class="btn  btn-outline-primary btn-sm" style="margin-right: 5px;">
+								<i class="fa fa-upload"></i> <a href="#" id="hover"> <fmt:message code="common.importer" /></a>
 							</button>
-							<button type="button" class="btn btn-outline-primary btn-sm"
-								style="margin-right: 5px;">
-								<i class="fas fa-download"></i> <a href="#" id="hover"> <fmt:message
-										code="common.exporter" /></a>
+							<button type="button" class="btn btn-outline-primary btn-sm" style="margin-right: 5px;">
+								<i class="fas fa-download"></i> 
+								<c:url value="/article/export/" var="export" />
+								<a href="${export}" id="hover"> <fmt:message code="common.exporter" /></a>
 							</button>
-
-
-
-
 						</h3>
 						<div class="card-tools">
-							<button type="button" class="btn btn-tool"
-								data-card-widget="collapse" data-toggle="tooltip"
-								title="Collapse">
+							<button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 								<i class="fas fa-minus"></i>
 							</button>
-							<button type="button" class="btn btn-tool"
-								data-card-widget="remove" data-toggle="tooltip" title="Remove">
+							<button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
 								<i class="fas fa-times"></i>
 							</button>
 						</div>
@@ -93,8 +77,7 @@
 								<div class="col-12">
 									<div class="card">
 										<div class="card-body">
-											<table id="example1"
-												class="table table-bordered table-striped">
+											<table id="example1" class="table table-bordered table-striped">
 												<thead>
 													<tr>
 														<th><fmt:message code="common.article.code" /></th>
@@ -117,40 +100,26 @@
 															<td>${articles.getCategory().getCode()}</td>
 															<td style="width: 200px !important;">
 																<h3 class="card-title">
-
-																	<button type="button"
-																		class="btn btn-outline-primary btn-sm"
-																		style="margin-right: 5px;">
+																	<button type="button" class="btn btn-outline-primary btn-sm" style="margin-right: 5px;">
 																		<i class="fas fa-pencil-alt"></i>
-																		<c:url
-																			value="/article/modifier/${articles.getIdArticle()}"
-																			var="urlModifier" />
-																		<a href="${urlModifier}" id="hover"><fmt:message
-																				code="common.modifier" /></a>
+																		<c:url value="/article/modifier/${articles.getIdArticle()}" var="urlModifier" />
+																		<a href="${urlModifier}" id="hover"><fmt:message code="common.modifier" /></a>
 																	</button>
-
-																	<button type="button"
-																		class="btn btn-outline-primary btn-sm"
-																		style="margin-right: 5px;" data-toggle="modal"
-																		data-target="#suppressionModal${articles.getIdArticle()}"
-																		id="hover">
+																	<button type="button" class="btn btn-outline-primary btn-sm" style="margin-right: 5px;" data-toggle="modal"
+																			data-target="#suppressionModal${articles.getIdArticle()}" id="hover">
 																		<i class="fas fa-trash"></i>
 																		<fmt:message code="common.supprimer" />
 																	</button>
 																	<!-- Modal validation de suppression-->
-																	<div class="modal fade"
-																		id="suppressionModal${articles.getIdArticle()}"
-																		tabindex="-1" role="dialog"
-																		aria-labelledby="exampleModalLabel" aria-hidden="true"
-																		style="font-size: 14px !important;">
+																	<div class="modal fade" id="suppressionModal${articles.getIdArticle()}" tabindex="-1" role="dialog"
+																		 aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-size: 14px !important;">
 																		<div class="modal-dialog" role="document">
 																			<div class="modal-content">
 																				<div class="modal-header">
 																					<h5 class="modal-title" id="exampleModalLabel">
 																						<fmt:message code="common.confirmation" />
 																					</h5>
-																					<button type="button" class="close"
-																						data-dismiss="modal" aria-label="Close">
+																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																						<span aria-hidden="true">&times;</span>
 																					</button>
 																				</div>
@@ -159,19 +128,12 @@
 																					${articles.getCodeArticle()} ??
 																				</div>
 																				<div class="modal-footer">
-																					<button type="button" class="btn btn-secondary"
-																						data-dismiss="modal"
-																						style="font-size: 13px !important;">
-																						<i class="fas fa-window-close"> <fmt:message
-																								code="common.annuler" /></i>
+																					<button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-size: 13px !important;">
+																						<i class="fas fa-window-close">&nbsp; <fmt:message code="common.annuler" /></i>
 																					</button>
-																					<c:url
-																						value="/article/supprimer/${articles.getIdArticle()}"
-																						var="urlSupprimer" />
-																					<a href="${urlSupprimer}" class="btn btn-danger"
-																						style="font-size: 13px !important;"><i
-																						class="fas fa-trash"> <fmt:message
-																								code="common.confirmation.suppression" /></i></a>
+																					<c:url value="/article/supprimer/${articles.getIdArticle()}" var="urlSupprimer" />
+																					<a href="${urlSupprimer}" class="btn btn-danger" style="font-size: 13px !important;">
+																					<iclass="fas fa-trash"> <fmt:message code="common.confirmation.suppression" /></i></a>
 																				</div>
 																			</div>
 																		</div>

@@ -62,4 +62,9 @@ public class LigneVenteServiceImpl implements ILigneVenteService {
 		return dao.findCountBy(paramName, paramValue);
 	}
 
+	@Override
+	public List<LigneVente> getByIdVente(Long idVente) {
+		return dao.getByIdVente(idVente);
+	}
+
 }

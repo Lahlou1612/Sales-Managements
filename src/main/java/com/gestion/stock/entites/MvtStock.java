@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "mvtStock")
 public class MvtStock implements Serializable {
+	private static final long serialVersionUID = 1L;
 	public static final int ENTREE = 1;
 	public static final int SORTIE = 2;
 
@@ -28,11 +29,22 @@ public class MvtStock implements Serializable {
 
 	private BigDecimal quantite;
 
-	private int typeMvt;
+	private String typeMvt;
 
 	@ManyToOne
 	@JoinColumn(name = "idArticle")
 	private Article article;
+
+	
+	
+	
+	public MvtStock(Date dateMvt, BigDecimal quantite, String typeMvt, Article article) {
+		super();
+		this.dateMvt = dateMvt;
+		this.quantite = quantite;
+		this.typeMvt = typeMvt;
+		this.article = article;
+	}
 
 	public MvtStock() {
 		super();
@@ -62,11 +74,11 @@ public class MvtStock implements Serializable {
 		this.quantite = quantite;
 	}
 
-	public int getTypeMvt() {
+	public String getTypeMvt() {
 		return typeMvt;
 	}
 
-	public void setTypeMvt(int typeMvt) {
+	public void setTypeMvt(String typeMvt) {
 		this.typeMvt = typeMvt;
 	}
 

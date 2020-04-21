@@ -36,7 +36,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService{
 	public Utilisateur getById(Long id) {
 		return dao.getById(id);
 	}
-
+	
 	@Override
 	public void remove(Long id) {
 		dao.remove(id);

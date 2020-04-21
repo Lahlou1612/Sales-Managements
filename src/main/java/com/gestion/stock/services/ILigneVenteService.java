@@ -22,4 +22,7 @@ public interface ILigneVenteService {
 	public LigneVente findOne(String[] paramNames, Object[] paramValues);
 
 	public int findCountBy(String paramName, String paramValue);
+	
+	public List<LigneVente> getByIdVente(Long idVente);
+
 }

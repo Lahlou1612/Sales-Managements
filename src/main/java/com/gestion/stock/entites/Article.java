@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "article")
 public class Article implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Long idArticle;
@@ -23,14 +25,11 @@ public class Article implements Serializable {
 	@NotNull
     @Size(min = 1, message = "Veuillez saisir votre Désignation svp !")
 	private String designation;
-//	@NotNull
-//    @Size(min = 1, message = "Veuillez saisir le prix unitaire HT svp !")
+
 	private BigDecimal prixUnitaireHT;
-//	@NotNull
-//    @Size(min = 1, message = "Veuillez saisir le taux TVA svp !")
+
 	private BigDecimal tauxTva;
-//	@NotNull
-//    @Size(min = 1, message = "Veuillez saisir le prix unitaire TTC svp !")
+
 	private BigDecimal prixUnitaireTTC;
 	private String photo;
 
@@ -38,6 +37,8 @@ public class Article implements Serializable {
 	@JoinColumn(name = "idCategory")
 	private Category category;
 
+	
+	
 	public Article() {
 		super();
 	}

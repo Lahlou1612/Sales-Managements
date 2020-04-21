@@ -1,20 +1,28 @@
 package com.gestion.stock.entites;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 @Entity
 @Table(name = "utilisateur")
 public class Utilisateur implements Serializable {
-
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private Long idUtilisateur;
@@ -30,10 +38,13 @@ public class Utilisateur implements Serializable {
 	@NotNull
     @Size(min = 1, message = "Veuillez saisir le Mot de passe svp !")
 	private String motDePasse;
+	
 	private String photo;
 	private boolean actived;
 	
-	@OneToMany(mappedBy = "utilisateur")
+	private String roleName;
+	
+	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
 	private List<Roles> roles;
 
 	public Utilisateur() {
@@ -95,12 +106,48 @@ public class Utilisateur implements Serializable {
 	public void setActived(boolean actived) {
 		this.actived = actived;
 	}
-
+	@JsonIgnore
 	public List<Roles> getRoles() {
 		return roles;
 	}
+	
+//	public String getRolesName() {
+//		String name="";
+//		for (Roles roles : getRoles()) {
+//			name = roles.getRoleName();
+//		}
+//		return name;
+//	}
 
 	public void setRoles(List<Roles> roles) {
 		this.roles = roles;
+	}
+	
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+	
+	@Transient
+	public String getRoleUtilisateurJson()
+	{
+		if(!roles.isEmpty())
+		{ 
+			try 
+			{
+				ObjectMapper mapper = new ObjectMapper();
+				return mapper.writeValueAsString(roles);
+			} catch (JsonGenerationException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return "";
 	}
 }

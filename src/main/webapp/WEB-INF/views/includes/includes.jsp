@@ -3,3 +3,5 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="fmt" %>
 <%@ page session="true" %>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%-- <%@ page language="java" pageEncoding="UTF-8"%> --%>
+<%-- <%@ page contentType="text/html;charset=UTF-8" %> --%>

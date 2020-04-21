@@ -34,15 +34,15 @@
 					<div class="row mb-2">
 						<div class="col-sm-6">
 							<h1>
-								<fmt:message code="common.liste.clients" />
+								<fmt:message code="common.liste.user" />
 							</h1>
 						</div>
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#"><fmt:message
-											code="common.client" /></a></li>
+											code="common.user" /></a></li>
 								<li class="breadcrumb-item active"><fmt:message
-										code="common.liste.clients" /></li>
+										code="common.liste.user" /></li>
 							</ol>
 						</div>
 					</div>
@@ -57,8 +57,8 @@
 							<button type="button" class="btn  btn-outline-primary btn-sm"
 								style="margin-right: 5px;">
 								<i class="fas fa-user-plus"></i> <a
-									href="<c:url value="/client/nouveau" />" id="hover"> <fmt:message
-										code="common.ajouter" /></a>
+									href="<c:url value="/utilisateur/nouveau" />" id="hover"> <fmt:message
+										code="common.ajouter.user" /></a>
 							</button>
 							<button type="button" class="btn  btn-outline-primary btn-sm"
 								style="margin-right: 5px;">
@@ -92,34 +92,49 @@
 							<div class="row">
 								<div class="col-12">
 									<div class="card">
+										<div class="card-header" style="background-color: #bfdae0;">
+											<h3 class="card-title">
+												<fmt:message code="common.liste.user" />
+											</h3>
+										</div>
 										<div class="card-body">
 											<table id="example1"
-												class="table table-bordered table-striped">
+												class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-														<th><fmt:message code="common.nom" /></th>
-														<th><fmt:message code="common.prenom" /></th>
-														<th><fmt:message code="common.adresse" /></th>
-														<th><fmt:message code="common.mail" /></th>
+														<th><fmt:message code="common.user.nom" /></th>
+														<th><fmt:message code="common.user.prenom" /></th>
+														<th><fmt:message code="common.user.mail" /></th>
+														<th><fmt:message code="common.user.password" /></th>
+														<th><fmt:message code="common.user.statut" /></th>
 														<th><fmt:message code="common.action" /></th>
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach items="${clients}" var="client">
+													<c:forEach items="${users}" var="user">
 														<tr>
-															<td>${client.getNom()}</td>
-															<td>${client.getPrenom()}</td>
-															<td>${client.getAdresse()}</td>
-															<td>${client.getMail()}</td>
-															<td style="width: 200px !important;">
+															<td>${user.getNom()}</td>
+															<td>${user.getPrenom()}</td>
+															<td>${user.getMail()}</td>
+															<td>${user.getMotDePasse()}</td>
+															<td>${user.isActived()}</td>
+															<td style="width: 310px !important;">
 																<h3 class="card-title">
-
+																		
+							<textArea id="json${user.getIdUtilisateur()}" style="display: none;">${user.getRoleUtilisateurJson()}</textArea>
+							<button type="button" class="btn btn-outline-primary btn-sm">
+							<i class="fas fa-th-list"></i>
+							<a href="javascript:void(0);" id="hover" onclick="updateDetailRole(${user.getIdUtilisateur()});">
+							<fmt:message code="common.list.detail.user" />
+							</a>
+							</button>	
+																		
 																	<button type="button"
 																		class="btn btn-outline-primary btn-sm"
 																		style="margin-right: 5px;">
 																		<i class="fas fa-pencil-alt"></i>
 																		<c:url
-																			value="/client/modifier/${client.getIdClient()}"
+																			value="/utilisateur/modifier/${user.getIdUtilisateur()}"
 																			var="urlModifier" />
 																		<a href="${urlModifier}" id="hover"><fmt:message
 																				code="common.modifier" /></a>
@@ -127,15 +142,15 @@
 
 																	<button type="button"
 																		class="btn btn-outline-primary btn-sm"
-																		style="margin-right: 5px;" data-toggle="modal"
-																		data-target="#suppressionModal${client.getIdClient()}"
+																		data-toggle="modal"
+																		data-target="#suppressionModal${user.getIdUtilisateur()}"
 																		id="hover">
 																		<i class="fas fa-trash"></i>
 																		<fmt:message code="common.supprimer" />
 																	</button>
 																	<!-- Modal validation de suppression-->
 																	<div class="modal fade"
-																		id="suppressionModal${client.getIdClient()}"
+																		id="suppressionModal${user.getIdUtilisateur()}"
 																		tabindex="-1" role="dialog"
 																		aria-labelledby="exampleModalLabel" aria-hidden="true"
 																		style="font-size: 14px !important;">
@@ -151,8 +166,8 @@
 																					</button>
 																				</div>
 																				<div class="modal-body">
-																					<fmt:message code="common.confirmation.msg" />
-																					${client.getNom()}&nbsp;${client.getPrenom()} ??
+																					<fmt:message code="common.confirmation.msg.user" />
+																					${user.getNom()}&nbsp;${user.getPrenom()} ??
 																				</div>
 																				<div class="modal-footer">
 																					<button type="button" class="btn btn-secondary"
@@ -162,7 +177,7 @@
 																								code="common.annuler" /></i>
 																					</button>
 																					<c:url
-																						value="/client/supprimer/${client.getIdClient()}"
+																						value="/utilisateur/supprimer/${user.getIdUtilisateur()}"
 																						var="urlSupprimer" />
 																					<a href="${urlSupprimer}" class="btn btn-danger"
 																						style="font-size: 13px !important;"><i
@@ -180,6 +195,29 @@
 											</table>
 										</div>
 									</div>
+									
+									<div class="card" id="role">
+										<div class="card-header" style="background-color: #bfdae0;">
+											<h3 class="card-title">
+												<fmt:message code="common.liste.role" />
+											</h3>
+										</div>
+										<div class="card-body">
+											<table id="example2"
+												class="table table-striped table-bordered table-hover">
+												<thead>
+													<tr>
+														<th><fmt:message code="common.user.id" /></th>
+														<th><fmt:message code="common.user.nom.role" /></th>
+													</tr>
+												</thead>
+												<tbody id="detailRole">													
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+
 								</div>
 							</div>
 						</section>
@@ -202,6 +240,8 @@
 		src="<%=request.getContextPath()%>/resources/plugins/datatables/jquery.dataTables.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/javascript/utilisateur.js"></script>
 	<!-- page script -->
 	<script>
 		$(function() {

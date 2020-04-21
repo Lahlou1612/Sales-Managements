@@ -67,8 +67,9 @@
 							</button>
 							<button type="button" class="btn btn-outline-primary btn-sm"
 								style="margin-right: 5px;">
-								<i class="fas fa-download"></i> <a href="#" id="hover"> <fmt:message
-										code="common.exporter" /></a>
+								<i class="fas fa-download"></i> 
+								<c:url value="/fournisseur/export/" var="export" />
+								<a href="${export}" id="hover"> <fmt:message code="common.exporter" /></a>
 							</button>
 
 

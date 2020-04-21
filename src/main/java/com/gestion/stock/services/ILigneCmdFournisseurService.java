@@ -22,4 +22,6 @@ public interface ILigneCmdFournisseurService {
 	public LigneCmdFournisseur findOne(String[] paramNames, Object[] paramValues);
 
 	public int findCountBy(String paramName, String paramValue);
+	
+	public List<LigneCmdFournisseur> getByIdCommande(Long idCommandeFournisseur);
 }

@@ -12,9 +12,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name = "client")
 public class Client implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long idClient;
@@ -35,7 +39,6 @@ public class Client implements Serializable {
 
 	@NotNull
 	@Size(min = 1, message = "Veuillez saisir votre Adresse Mail svp !")
-    //@Email(message="Veuillez re-vérifier votre Adresse Mail Svp !")
 	private String mail;
 
 	@OneToMany(mappedBy = "client")
@@ -93,6 +96,7 @@ public class Client implements Serializable {
 		this.mail = mail;
 	}
 
+	@JsonIgnore
 	public List<CommandeClient> getCommandeClients() {
 		return commandeClients;
 	}

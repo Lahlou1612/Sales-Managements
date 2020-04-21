@@ -31,22 +31,16 @@
 			<div class="center-block">
 				<div class="intro-wrapper">
 					<div class="login-box">
-						<img src="/test/resources/dist/img/AdminLTELogo.png"
-							alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-							style="opacity: .8">
+						<img src="/test/resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 						<div class="login-logo">
 							<a href="#"><b>Global Business</b> Application</a>
 						</div>
 						<div class="card">
 							<div class="card-body login-card-body">
 								<p class="login-box-msg">Authentification</p>
-
-								<form action="<c:url value='j_spring_security_check'/>"
-									method="post">
+								<form action="<c:url value='j_spring_security_check'/>" method="post">
 									<div class="input-group mb-3">
-										<input type="email" class="form-control"
-											placeholder="Entrez votre email..." name="j_username"
-											id="username" autofocus>
+										<input type="email" class="form-control" placeholder="Entrez votre email..." name="j_username" id="username" autofocus>
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-envelope"></span>
@@ -54,8 +48,7 @@
 										</div>
 									</div>
 									<div class="input-group mb-3">
-										<input type="password" class="form-control"
-											placeholder="Entrez votre mot de passe..." name="j_password">
+										<input type="password" class="form-control" placeholder="Entrez votre mot de passe..." name="j_password">
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-lock"></span>
@@ -64,8 +57,7 @@
 									</div>
 									<div class="row">
 										<div class="col-12">
-											<input type="submit" type="submit" value="S'authentifier"
-												class="btn btn-primary btn-block" />
+											<input type="submit" type="submit" value="S'authentifier" class="btn btn-primary btn-block" />
 										</div>
 									</div>
 								</form>

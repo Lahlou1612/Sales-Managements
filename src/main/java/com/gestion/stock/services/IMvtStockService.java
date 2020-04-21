@@ -22,4 +22,10 @@ public interface IMvtStockService {
 	public MvtStock findOne(String[] paramNames, Object[] paramValues);
 
 	public int findCountBy(String paramName, String paramValue);
+	
+	public List<MvtStock> getByIdArticle(Long idArticle);
+	
+	public MvtStock getByIdArticleObjet(Long idArticle);
+
+
 }

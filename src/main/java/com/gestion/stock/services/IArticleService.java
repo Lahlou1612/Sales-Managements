@@ -23,5 +23,8 @@ public interface IArticleService {
 	public Article findOne(String[] paramNames, Object[] paramValues);
 
 	public int findCountBy(String paramName, String paramValue);
+	
+	public List<Article> selectedStockItems();
+
 
 }

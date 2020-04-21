@@ -14,7 +14,7 @@
 					class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">Adil LAHLOU</a>
+				<a href="#" class="d-block" style="font-weight: 600;">LAHLOU Adil</a>
 			</div>
 		</div>
 		<nav class="mt-2">
@@ -77,7 +77,7 @@
 									<fmt:message code="common.fournisseur" />
 								</p>
 						</a></li>
-						<c:url value="/commandeFournisseur/" var="cmdFournisseur" />
+						<c:url value="/commandefournisseur/" var="cmdFournisseur" />
 						<li class="nav-item"><a
 							href="${cmdFournisseur}"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
@@ -101,6 +101,13 @@
 							<fmt:message code="common.vente" />
 						</p>
 				</a></li>
+				<c:url value="/achat/" var="achat" />	
+				<li class="nav-item"><a href="${achat}" class="nav-link">
+						<i class="nav-icon fas fa-cart-arrow-down"></i>
+						<p>
+							<fmt:message code="common.achat" />
+						</p>
+				</a></li>
 <!-- 				<c:url value="/parametrageCategory/" var="prmCategory" />	 -->
 				<li class="nav-item has-treeview"><a href="#" class="nav-link">
 						<i class="nav-icon fas fa-cogs"></i>
@@ -117,7 +124,7 @@
 									<fmt:message code="common.parametrage.category" />
 								</p>
 						</a></li>
-						<c:url value="/parametrageUtilisateur/" var="prmUtilisateur" />
+						<c:url value="/utilisateur/" var="prmUtilisateur" />
 						<li class="nav-item"><a
 							href="${prmUtilisateur}"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>

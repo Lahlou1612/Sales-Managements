@@ -64,7 +64,8 @@
 							</button>
 							<button type="button" class="btn btn-outline-primary btn-sm" style="margin-right: 5px;">
 								<i class="fas fa-download"></i> 
-								<a href="#" id="hover"> <fmt:message code="common.exporter" /></a>
+								<c:url value="/category/export/" var="export" />
+								<a href="${export }" id="hover"> <fmt:message code="common.exporter" /></a>
 							</button>
 						</h3>
 						<div class="card-tools">

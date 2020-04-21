@@ -1,6 +1,5 @@
 package com.gestion.stock.controllers;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 	
 	@RequestMapping(value = "/login")
-	public String home(HttpServletRequest request, Model model) {
+	public String home() {
 		return "login/login";
 	}
 	

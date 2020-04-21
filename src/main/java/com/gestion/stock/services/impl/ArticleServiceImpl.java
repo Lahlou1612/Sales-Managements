@@ -62,4 +62,9 @@ public class ArticleServiceImpl implements IArticleService{
 		return dao.findCountBy(paramName, paramValue);
 	}
 
+	@Override
+	public List<Article> selectedStockItems() {
+		return dao.selectedStockItems();
+	}
+
 }

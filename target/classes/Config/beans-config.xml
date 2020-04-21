@@ -58,9 +58,24 @@
 		<property name="dao" ref="utilisateurDao"></property>
 	</bean>
 	
+	<bean id="roleDao" class="com.gestion.stock.dao.impl.RoleDAOImpl" />
+	<bean id="roleService" class="com.gestion.stock.services.impl.RoleServiceImpl">
+		<property name="dao" ref="roleDao"></property>
+	</bean>
+	
 	<bean id="venteDao" class="com.gestion.stock.dao.impl.VenteDaoImpl" />
 	<bean id="venteService" class="com.gestion.stock.services.impl.VenteServiceImpl">
 		<property name="dao" ref="venteDao"></property>
+	</bean>
+	
+	<bean id="achatDao" class="com.gestion.stock.dao.impl.AchatDaoImpl" />
+	<bean id="achatService" class="com.gestion.stock.services.impl.AchatServiceImpl">
+		<property name="dao" ref="achatDao"></property>
+	</bean>
+	
+	<bean id="ligneAchatDao" class="com.gestion.stock.dao.impl.LigneAchatDaoImpl" />
+	<bean id="ligneAchatService" class="com.gestion.stock.services.impl.LigneAchatServiceImpl">
+		<property name="dao" ref="ligneAchatDao"></property>
 	</bean>
 
 </beans>
